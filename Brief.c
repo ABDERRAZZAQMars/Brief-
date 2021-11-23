@@ -1,61 +1,88 @@
-#include <stdlib.h>
+#include <stdio.h>
 #include <stdio.h>
 
 void menu();
-char introduire_compte();
+void introduire_compte();
+
+struct compte co;
 
 int main()
 {
     int choix;
+    char on[1];
 
-    menu();
-
-    printf("Entrer Votre Choix : ");
-    scanf("%d",&choix);
-
-    switch (choix)
+    do
     {
+        system("CLS");
+        menu();
+
+        do
+        {
+            printf("Entrer Votre Choix : ");
+            scanf("%d",&choix);
+
+            switch (choix)
+            {
+                case 1 :
+                {
+                    system("CLS");
+                    printf("\n===============================================\n");
+                    printf("=====    INTRODUIRE UN COMPTE BANCAIRE    =====\n");
+                    printf("===============================================\n");
+                    introduire_compte();
+                    break;
+                }
+
+                case 2 :
+                {
+                    system("CLS");
+                    break;
+                }
+
+                case 3 :
+                {
+                    system("CLS");
+                    break;
+                }
+
+                case 4 :
+                {
+                    system("CLS");
+                    break;
+                }
+
+                case 5 :
+                {
+                    system("CLS");
+                    break;
+                }
+
+                case 6 :
+                {
+                    system("CLS");
+                    break;
+                }
+                
+                default:
+                {
+                    system("CLS");
+                    menu();
+                    printf("SVP Entrer Votre Choix ( 1 , 2 , 3 , 4 , 5 , 6)\n");
+                    break;
+                }
+            }//fin switch
+        } while (choix<1 || choix>6);
         
-    case 1 : 
-        {
-            printf("\n===============================================\n");
-            printf("=====    INTRODUIRE UN COMPTE BANCAIRE    =====\n");
-            printf("===============================================\n");
-            introduire_compte();
-            break; 
-        }
+        printf("\n===============================================\n");
+        printf("======   VOULEZ-VOUS CONTINUER : O/N ?   ======\n");
+        printf("===============================================\n");
+        scanf("%s",&on);
+
     
-    case 2 : 
-        {
-            break; 
-        }
+    } while (on=='o' || on=='o');
     
-    case 3 : 
-        {
-            break; 
-        }
 
-    case 4 : 
-        {
-            break; 
-        }
-
-    case 5 : 
-        {
-            break; 
-        }
-
-    case 6 : 
-        {
-            break; 
-        }
-        
-    default:
-        {
-            break;
-        }
-    }
-
+    system("PAUSE");
     return 0;
 }
 
@@ -73,19 +100,24 @@ void menu()
     printf("===============================================\n\n");
 }
 
-char introduire_compte()
+struct compte
 {
-    char CIN[20] , Nom[50] , Prenom[50] , Montant[50];
+    char CIN[50] , Nom[50] , Prenom[50] ;
+    float Montant;
+}co;
 
+void introduire_compte()
+{
     printf("\nEntrer Votre CIN : ");
-    scanf("%s",&CIN);
+    scanf("%s",co.CIN);
 
     printf("\nEntrer Votre Nom : ");
-    scanf("%s",&Nom);
+    scanf("%s",co.Nom);
 
     printf("\nEntrer Votre Prenom : ");
-    scanf("%s",&Prenom);
+    scanf("%s",co.Prenom);
 
     printf("\nEntrer Votre Montant : ");
-    scanf("%s",&Montant);
+    scanf("%f",&co.Montant);
 }
+
